@@ -13,3 +13,4 @@ Inicialmente um projeto para a disciplina de POO, venho dar sequência no sistem
 - Cadastro de informações (Fornecedor, Produto, Lote e Movimentação);
 - Impressão de relatórios via .txt (entrada e saída);
 - Gravação e leitura de informações via JSON server;
+- Tratamento de exceção personalizada;

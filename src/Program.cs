@@ -13,55 +13,65 @@ class Program
         Gerenciamento.CarregarLotes(lotes);
         Gerenciamento.CarregarFornecedores(fornecedores);
         Gerenciamento.CarregarMovimentacoes(movimentacoes);
-        int paginaMenu = 1;
+        
+        int paginaMenu = 4;
 
-        do
+        try
         {
-            Console.Clear();
-
-            Console.WriteLine("=== SISTEMA ALMOXARIFADO ===");
-            Console.WriteLine();
-
-            Console.WriteLine("1 - Cadastro de Informações");
-            Console.WriteLine("2 - Obter Informações");
-            Console.WriteLine("3 - Impressão de Relatórios");
-            Console.WriteLine("0 - Sair");
-
-            Console.Write("ESCOLHA: ");
-            paginaMenu = int.Parse(Console.ReadLine());
-            Console.WriteLine();
-
-            switch (paginaMenu)
+            do
             {
-                case 0:
-                Console.WriteLine("Obrigado por utilizar nosso sistema!");
-                Gerenciamento.SalvarProdutos(produtos);
-                Gerenciamento.SalvarLotes(lotes);
-                Gerenciamento.SalvarFornecedores(fornecedores);
-                Gerenciamento.SalvarMovimentacoes(movimentacoes);
-                break;
+                Console.Clear();
 
-                case 1:
-                Cadastros();
-                break;
-
-                case 2:
-                Listagem();
-                break;
-
-                case 3:
-                ImprimirRelatorio();
-                break;
-                
-                default:
-                Console.WriteLine($"Número inválido!\n(Clique novamente para continuar)");
-                Console.ReadKey();
+                Console.WriteLine("=== SISTEMA ALMOXARIFADO ===");
                 Console.WriteLine();
-                break;
-            }
+
+                Console.WriteLine("1 - Cadastro de Informações");
+                Console.WriteLine("2 - Obter Informações");
+                Console.WriteLine("3 - Impressão de Relatórios");
+                Console.WriteLine("0 - Sair");
+
+                Console.Write("ESCOLHA: ");
+                paginaMenu = int.Parse(Console.ReadLine());
+                Console.WriteLine();
+
+                switch (paginaMenu)
+                {
+                    case 0:
+                    Console.WriteLine("Obrigado por utilizar nosso sistema!");
+                    Gerenciamento.SalvarProdutos(produtos);
+                    Gerenciamento.SalvarLotes(lotes);
+                    Gerenciamento.SalvarFornecedores(fornecedores);
+                    Gerenciamento.SalvarMovimentacoes(movimentacoes);
+                    break;
+
+                    case 1:
+                    Cadastros();
+                    break;
+
+                    case 2:
+                    Listagem();
+                    break;
+
+                    case 3:
+                    ImprimirRelatorio();
+                    break;
+                
+                    default:
+                    Console.WriteLine($"Número inválido!\n(Clique novamente para continuar)");
+                    Console.ReadKey();
+                    Console.WriteLine();
+                    break;
+                }
 
 
-        }while(paginaMenu != 0);
+            }while(paginaMenu != 0); 
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine($"Valor inválido!\n(Clique novamente para voltar ao menu)");
+            Console.ReadKey();
+        }
+        
     }
     public static void Cadastros()
     {
@@ -78,75 +88,127 @@ class Program
         Console.WriteLine("3 - Fornecedor");
         Console.WriteLine("4 - Movimentação");
         Console.WriteLine("0 - Cancelar");
-        
-        Console.Write("ESCOLHA: ");
-        paginaCadastro = int.Parse(Console.ReadLine());
-        Console.WriteLine();
 
-        switch (paginaCadastro)
+        try
         {
-            case 0:
-            Console.WriteLine($"Voltando ao menu...\n(Clique novamente para continuar)");
-            Console.ReadKey();
+            Console.Write("ESCOLHA: ");
+            paginaCadastro = int.Parse(Console.ReadLine());
             Console.WriteLine();
-            break;
 
-            case 1:
-            CadastroProduto();
-            break;
+            switch (paginaCadastro)
+            {
+                case 0:
+                Console.WriteLine($"Voltando ao menu...\n(Clique novamente para continuar)");
+                Console.ReadKey();
+                Console.WriteLine();
+                break;
 
-            case 2:
-            CadastroLote();
-            break;
+                case 1:
+                CadastroProduto();
+                break;
 
-            case 3:
-            CadastroFornecedor();
-            break;
+                case 2:
+                CadastroLote();
+                break;
 
-            case 4:
-            CadastroMovimentacao();
-            break;
+                case 3:
+                CadastroFornecedor();
+                break;
+
+                case 4:
+                CadastroMovimentacao();
+                break;
             
-            default:
-            Console.WriteLine($"Número inválido!\n(Clique novamente para continuar)");
+                default:
+                Console.WriteLine($"Número inválido!\n(Clique novamente para continuar)");
+                Console.ReadKey();
+                Console.WriteLine();
+                break;
+            }
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine($"Valor inválido!\n(Clique novamente para voltar ao menu)");
             Console.ReadKey();
-            Console.WriteLine();
-            break;
         }
     }
 
     public static void CadastroProduto()
     {
-        Console.Write("ID: ");
-        int idProduto = int.Parse(Console.ReadLine());
+        int idProduto;
+        string nome;
+        string descricao;
+        double preco;
+        string categoria;
+
+        Console.Clear();
+
+        try
+        {
+            Console.Write("ID: ");
+            idProduto = int.Parse(Console.ReadLine());
+
+            foreach (Produto item in produtos)
+                if (idProduto == item.ObterIdProduto())
+                    throw new IDsimilarException("Dois produtos não podem ter o mesmo ID!");
+                
+            
+        }
+        catch (IDsimilarException ex)
+        {
+            Console.WriteLine($"{ex.Message}\n(Clique novamente para continuar)");
+            Console.ReadKey();
+            return;
+        }
+        
 
         Console.Write("NOME: ");
-        string nome = Console.ReadLine();
+        nome = Console.ReadLine();
 
         Console.Write("DESCRIÇÃO: ");
-        string descricao = Console.ReadLine();
+        descricao = Console.ReadLine();
 
-        Console.Write("PREÇO: ");
-        double preco = double.Parse(Console.ReadLine());
+        try
+        {
+            Console.Write("PREÇO: ");
+            preco = double.Parse(Console.ReadLine());
+            
+            if(preco <= 0)
+                throw new PreçoInvalidoException("Preço não pode ser menor ou igual a zero!");
+        }
+        catch (PreçoInvalidoException ex)
+        {
+            Console.WriteLine($"{ex.Message}\n(Clique novamente para continuar)");
+            Console.ReadKey();
+            return;
+        }
 
         Console.Write("CATEGORIA: ");
-        string categoria = Console.ReadLine();
+        categoria = Console.ReadLine();
 
         Produto produto = new Produto(idProduto, nome, descricao, preco, categoria);
         produtos.Add(produto);
 
-        Console.WriteLine("Cadastro realizado com sucesso!");
-        Console.WriteLine();
+        Console.WriteLine($"Cadastro realizado com sucesso!\n(Clique novamente para voltar ao menu)");
+        Console.ReadKey();
     }
     public static void CadastroLote()
     {
+        int idProduto;
+        int idLote;
+        string codigoLote;
+        int quantidade;
+        DateTime dataValidade;
+
+        Console.Clear();
+
         Console.WriteLine("Produtos cadastrados:");
 
         foreach (Produto produto in produtos)
             Console.WriteLine($"{produto.ObterIdProduto()} - {produto.ObterNome()}");
 
         Console.Write("Informe o ID do produto: ");
-        int idProduto = int.Parse(Console.ReadLine());
+        idProduto = int.Parse(Console.ReadLine());
 
         Produto produtoSelecionado = null;
 
@@ -159,64 +221,169 @@ class Program
 
         if (produtoSelecionado == null)
         {
-            Console.WriteLine($"Produto não encontrado!\n(Clique novamente para continuar)");
+            Console.WriteLine($"Produto não encontrado!\n(Clique novamente para voltar ao menu)");
             Console.ReadKey();
             Console.WriteLine();
             return;
         }
 
-        Console.Write("ID: ");
-        int idLote = int.Parse(Console.ReadLine());
+        try
+        {
+            Console.Write("ID: ");
+            idLote = int.Parse(Console.ReadLine());
+
+            foreach (Lote item in lotes)
+            {
+                if (idLote == item.ObterIdLote())
+                    throw new IDsimilarException("Dois lotes não podem ter o mesmo ID!");
+                
+            }
+        }
+        catch (IDsimilarException ex)
+        {
+            Console.WriteLine($"{ex.Message}\n(Clique novamente para voltar ao menu)");
+            Console.ReadKey();
+            return;
+        }
 
         Console.Write("CÓDIGO DO LOTE: ");
-        string codigoLote = Console.ReadLine();
+        codigoLote = Console.ReadLine();
 
-        Console.Write("QUANTIDADE: ");
-        int quantidade = int.Parse(Console.ReadLine());
+        try
+        {
+            Console.Write("QUANTIDADE: ");
+            quantidade = int.Parse(Console.ReadLine());
 
-        Console.Write("VALIDADE: ");
-        DateTime dataValidade = DateTime.Parse(Console.ReadLine());
+            if (quantidade < 0)
+                throw new QuantidadeInvalidaException("Quantidade do lote não pode ser negativa!");
+            
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine($"Valor inválido!\n(Clique novamente para voltar ao menu)");
+            Console.ReadKey();
+            return;
+        }
+        catch (QuantidadeInvalidaException ex)
+        {
+            Console.WriteLine($"{ex.Message}\n(Clique novamente para voltar ao menu)");
+            Console.ReadKey();
+            return;
+        }
+
+        try
+        {
+            Console.Write("VALIDADE: ");
+            dataValidade = DateTime.Parse(Console.ReadLine());
+
+            if (dataValidade <= DateTime.Today)
+                throw new DataValidadeInvalidaException("A data de validade não pode ser igual ou anterior a data de hoje!");
+            
+        }
+        catch (DataValidadeInvalidaException ex)
+        {
+            Console.WriteLine($"{ex.Message}\n(Clique novamente para continuar)");
+            Console.ReadKey();
+            return;
+        }
+        
 
         Lote lote = new Lote(idLote, codigoLote, quantidade, dataValidade, produtoSelecionado);
         lotes.Add(lote);
         produtoSelecionado.AdicionarLote(lote);
         
-        Console.WriteLine("Cadastro realizado com sucesso!");
-        Console.WriteLine();
+        Console.WriteLine($"Cadastro realizado com sucesso!\n(Clique novamente para voltar ao menu)");
+        Console.ReadKey();
     }
     public static void CadastroFornecedor()
     {
-        Console.Write("ID: ");
-        int idFornecedor = int.Parse(Console.ReadLine());
+        int idFornecedor;
+        string nome;
+        string cnpj;
+        string telefone;
+        string email;
+
+        Console.Clear();
+
+        try
+        {
+            Console.Write("ID: ");
+            idFornecedor = int.Parse(Console.ReadLine());
+
+            foreach (Fornecedor item in fornecedores)
+                if (idFornecedor == item.ObterIdFornecedor())
+                    throw new IDsimilarException("Dois fornecedores não podem ter o mesmo ID!");
+                
+            
+        }
+        catch (IDsimilarException ex)
+        {
+            Console.WriteLine($"{ex.Message}\n(Clique novamente para voltar ao menu)");
+            Console.ReadKey();
+            return;
+        }
 
         Console.Write("NOME: ");
-        string nome = Console.ReadLine();
+        nome = Console.ReadLine();
 
         Console.Write("CNPJ: ");
-        string cnpj = Console.ReadLine();
+        cnpj = Console.ReadLine();
 
         Console.Write("TELEFONE: ");
-        string telefone = Console.ReadLine();
+        telefone = Console.ReadLine();
 
         Console.Write("E-MAIL: ");
-        string email = Console.ReadLine();
+        email = Console.ReadLine();
         
         Fornecedor fornecedor = new Fornecedor(idFornecedor, nome, cnpj, telefone, email);
         fornecedores.Add(fornecedor);
 
-        Console.WriteLine("Cadastro realizado com sucesso!");
-        Console.WriteLine();
+        Console.WriteLine($"Cadastro realizado com sucesso!\n(Clique novamente para voltar ao menu)");
+        Console.ReadKey();
     }
     public static void CadastroMovimentacao()
     {
-        Console.Write("ID: ");
-        int idMovimentacao = int.Parse(Console.ReadLine());
+        int idMovimentacao = 0;
+        string tipo;
+        string observacao;
 
-        Console.Write("TIPO (entrada / saida): ");
-        string tipo = Console.ReadLine().ToLower();
+        Console.Clear();
+
+        try
+        {
+            Console.Write("ID: ");
+            idMovimentacao = int.Parse(Console.ReadLine());
+
+            foreach (Movimentacao item in movimentacoes)
+                if (idMovimentacao == item.ObterIdMovimentacao())
+                    throw new IDsimilarException("Duas movimentações não podem ter o mesmo ID!");
+            
+        }
+        catch (IDsimilarException ex)
+        {
+            Console.WriteLine($"{ex.Message}\n(Clique novamente para voltar ao menu)");
+            Console.ReadKey();
+            return;
+        }
+
+        try
+        {
+            Console.Write("TIPO (entrada / saida): ");
+            tipo = Console.ReadLine().ToLower();
+
+            if((tipo != "entrada") && (tipo != "saida"))
+                throw new TipoMovimentacaoInvalidaException("Tipo da movimentação inválido!");
+        }
+        catch (TipoMovimentacaoInvalidaException ex)
+        {
+            Console.WriteLine($"{ex.Message}\n(Clique novamente para voltar ao menu)");
+            Console.ReadKey();
+            return;
+        }
+        
 
         Console.Write("OBSERVAÇÃO: ");
-        string observacao = Console.ReadLine();
+        observacao = Console.ReadLine();
 
         Movimentacao movimentacao = new Movimentacao(idMovimentacao, DateTime.Now, tipo, observacao);
 
@@ -248,12 +415,31 @@ class Program
             if (loteSelecionado == null)
             {
                 Console.WriteLine("Lote não encontrado.");
-                continue;
+                return;
             }
 
+            int quantidade;
+            try
+            {
+                Console.Write("QUANTIDADE: ");
+                quantidade = int.Parse(Console.ReadLine());
 
-            Console.Write("QUANTIDADE: ");
-            int quantidade = int.Parse(Console.ReadLine());
+                if(quantidade <= 0)
+                    throw new QuantidadeInvalidaException("A quantidade a ser movimentada deve ser maior do que 0!");
+            }
+            catch (System.FormatException)
+            {
+                Console.WriteLine($"Valor inválido!\n(Clique novamente para voltar ao menu)");
+                Console.ReadKey();
+                return;
+            }
+            catch (QuantidadeInvalidaException ex)
+            {
+                Console.WriteLine($"{ex.Message}\n(Clique novamente para voltar ao menu)");
+                Console.ReadKey();
+                return;
+            }
+            
 
             if (tipo == "entrada")
                 loteSelecionado.AdicionarQuantidade(quantidade);
@@ -280,8 +466,8 @@ class Program
 
         movimentacoes.Add(movimentacao);
 
-        Console.WriteLine("Cadastro realizado com sucesso!");
-        Console.WriteLine();
+        Console.WriteLine($"Cadastro realizado com sucesso!\n(Clique novamente para voltar ao menu)");
+        Console.ReadKey();
     }
 
     public static void Listagem()
