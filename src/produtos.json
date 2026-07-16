@@ -1,0 +1,30 @@
+[
+  {
+    "IdProduto": 100,
+    "Nome": "Queijo Mussarela",
+    "Descricao": "Queijo Mussarela 500g Campinas",
+    "Preco": 30.99,
+    "Categoria": "Leites e Derivados"
+  },
+  {
+    "IdProduto": 101,
+    "Nome": "Caixa de Leite 1L",
+    "Descricao": "Caixa de Leite 1L Itambe",
+    "Preco": 4.49,
+    "Categoria": "Leites e Derivados"
+  },
+  {
+    "IdProduto": 102,
+    "Nome": "Iogurte 85g",
+    "Descricao": "Iogurte 85g Nestle",
+    "Preco": 1.89,
+    "Categoria": "Leites e Derivados"
+  },
+  {
+    "IdProduto": 103,
+    "Nome": "Requeij\u00E3o",
+    "Descricao": "Requeij\u00E3o 500g",
+    "Preco": 13.99,
+    "Categoria": "Leites e Derivados"
+  }
+]
