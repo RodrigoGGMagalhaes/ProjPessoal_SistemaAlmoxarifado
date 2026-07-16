@@ -1,4 +1,4 @@
-﻿﻿using System.Text.Json;
+﻿using System.Text.Json;
 
 class Program
 {
@@ -9,22 +9,22 @@ class Program
 
     static void Main()
     {
-        Console.Clear(); // Limpar o terminal de mensagens de possíveis erros
-
-        CarregarProdutos();
-        CarregarLotes();
-        CarregarFornecedores();
-        CarregarMovimentacoes();
+        Gerenciamento.CarregarProdutos(produtos);
+        Gerenciamento.CarregarLotes(lotes);
+        Gerenciamento.CarregarFornecedores(fornecedores);
+        Gerenciamento.CarregarMovimentacoes(movimentacoes);
         int paginaMenu = 1;
 
         do
         {
+            Console.Clear();
+
             Console.WriteLine("=== SISTEMA ALMOXARIFADO ===");
             Console.WriteLine();
 
             Console.WriteLine("1 - Cadastro de Informações");
-            Console.WriteLine("2 - Listagem de Informações");
-            Console.WriteLine("3 - Imprimir Relatório");
+            Console.WriteLine("2 - Obter Informações");
+            Console.WriteLine("3 - Impressão de Relatórios");
             Console.WriteLine("0 - Sair");
 
             Console.Write("ESCOLHA: ");
@@ -35,10 +35,10 @@ class Program
             {
                 case 0:
                 Console.WriteLine("Obrigado por utilizar nosso sistema!");
-                SalvarProdutos();
-                SalvarLotes();
-                SalvarFornecedores();
-                SalvarMovimentacoes();
+                Gerenciamento.SalvarProdutos(produtos);
+                Gerenciamento.SalvarLotes(lotes);
+                Gerenciamento.SalvarFornecedores(fornecedores);
+                Gerenciamento.SalvarMovimentacoes(movimentacoes);
                 break;
 
                 case 1:
@@ -65,6 +65,8 @@ class Program
     }
     public static void Cadastros()
     {
+        Console.Clear();
+
         int paginaCadastro;
 
         Console.WriteLine("=== CADASTROS ===");
@@ -284,101 +286,107 @@ class Program
 
     public static void Listagem()
     {
+        Console.Clear();
+
         int paginaListagem;
 
         Console.WriteLine("=== LISTAGEM ===");
         Console.WriteLine();
 
         Console.WriteLine("Lista a ser montada: ");
-        Console.WriteLine("1 - Produto");
-        Console.WriteLine("2 - Lote");
-        Console.WriteLine("3 - Fornecedor");
-        Console.WriteLine("4 - Movimentação");
+        Console.WriteLine("1 - Produtos e Lotes");
+        Console.WriteLine("2 - Fornecedor");
+        Console.WriteLine("3 - Movimentação");
         Console.WriteLine("0 - Cancelar");
-        
-        Console.Write("ESCOLHA: ");
-        paginaListagem = int.Parse(Console.ReadLine());
-        Console.WriteLine();
-
-        switch (paginaListagem)
+        try
         {
-            case 0:
-            Console.WriteLine($"Voltando ao menu...\n(Clique novamente para continuar)");
-            Console.ReadKey();
+            Console.Write("ESCOLHA: ");
+            paginaListagem = int.Parse(Console.ReadLine());
             Console.WriteLine();
-            break;
 
-            case 1:
-            foreach(Produto produto in produtos)
-                {
-                    Console.WriteLine($"ID: {produto.ObterIdProduto()}");
-                    Console.WriteLine($"NOME: {produto.ObterNome()}");
-                    Console.WriteLine($"DESCRIÇÃO: {produto.ObterDescricao()}");
-                    Console.WriteLine($"PREÇO: {produto.ObterPreco()}");
-                    Console.WriteLine($"CATEGORIA: {produto.ObterCategoria()}");
-                    Console.WriteLine();
-                }
+            switch (paginaListagem)
+            {
+                case 0:
+                Console.WriteLine($"Voltando ao menu...\n(Clique novamente para continuar)");
+                Console.ReadKey();
+                Console.WriteLine();
+                break;
 
-            Console.WriteLine("(Clique novamente para voltar ao menu)");
-            Console.ReadKey();
-            break;
-
-            case 2:
-            foreach (Lote lote in lotes)
-                {
-                    Console.WriteLine($"ID DO PRODUTO: {lote.ObterProduto().ObterIdProduto()}");
-                    Console.WriteLine($"NOME DO PRODUTO: {lote.ObterProduto().ObterNome()}");
-                    Console.WriteLine($"ID DO LOTE: {lote.ObterIdLote()}");
-                    Console.WriteLine($"CÓDIGO DO LOTE: {lote.ObterCodigoLote()}");
-                    Console.WriteLine($"QUANTIDADE: {lote.ObterQuantidadeAtual()}");
-                    Console.WriteLine($"VALIDADE: {lote.ObterValidade()}");
-                    Console.WriteLine();
-                }
-
-            Console.WriteLine("(Clique novamente para voltar ao menu)");
-            Console.ReadKey();
-            break;
-
-            case 3:
-            foreach(Fornecedor fornecedor in fornecedores)
-                {
-                    Console.WriteLine($"ID: {fornecedor.ObterIdFornecedor()}");
-                    Console.WriteLine($"NOME: {fornecedor.ObterNome()}");
-                    Console.WriteLine($"CNPF: {fornecedor.ObterCnpj()}");
-                    Console.WriteLine($"TELEFONE: {fornecedor.ObterTelefone()}");
-                    Console.WriteLine($"E-MAIL: {fornecedor.ObterEmail()}");
-                    Console.WriteLine();
-                }
-
-            Console.WriteLine("(Clique novamente para voltar ao menu)");
-            Console.ReadKey();
-            break;
-
-            case 4:
-            foreach (Movimentacao mov in movimentacoes)
-                {
-                    Console.WriteLine($"ID: {mov.ObterIdMovimentacao()}");
-                    Console.WriteLine($"TIPO: {mov.ObterTipo()}");
-                    Console.WriteLine($"DATA: {mov.ObterData()}");
-
-                    foreach (ItemMovimentacao item in mov.ObterItens())
+                case 1:
+                Console.Clear();
+                foreach(Produto produto in produtos)
                     {
-                        Console.WriteLine($"PRODUTO: {item.ObterLote().ObterProduto().ObterNome()}");
-                        Console.WriteLine($"LOTE: {item.ObterLote().ObterCodigoLote()}");
-                        Console.WriteLine($"QUANTIDADE: {item.ObterQuantidade()}");
+                        Console.WriteLine($"ID DO PRODUTO: {produto.ObterIdProduto()}");
+                        Console.WriteLine($"NOME: {produto.ObterNome()}");
+                        Console.WriteLine($"DESCRIÇÃO: {produto.ObterDescricao()}");
+                        Console.WriteLine($"PREÇO: {produto.ObterPreco()}");
+                        Console.WriteLine($"CATEGORIA: {produto.ObterCategoria()}");
+                        Console.WriteLine($"LOTES DO PRODUTO: ");
+                        foreach (Lote lote in lotes)
+                        {
+                            if(lote.ObterProduto().ObterIdProduto() == produto.ObterIdProduto())
+                            {
+                                Console.WriteLine();
+                                Console.WriteLine($"ID DO LOTE: {lote.ObterIdLote()}");
+                                Console.WriteLine($"CÓDIGO: {lote.ObterCodigoLote()}");
+                                Console.WriteLine($"QUANTIDADE: {lote.ObterQuantidadeAtual()}");
+                                Console.WriteLine($"VALIDADE: {lote.ObterValidade()}");
+                            }
+                        }
                         Console.WriteLine();
                     }
-                }
 
-            Console.WriteLine("(Clique novamente para voltar ao menu)");
-            Console.ReadKey();
-            break;
+                Console.WriteLine("(Clique novamente para voltar ao menu)");
+                Console.ReadKey();
+                break;
+
+                case 2:
+                Console.Clear();
+                foreach(Fornecedor fornecedor in fornecedores)
+                    {
+                        Console.WriteLine($"ID DO FORNECEDOR: {fornecedor.ObterIdFornecedor()}");
+                        Console.WriteLine($"NOME: {fornecedor.ObterNome()}");
+                        Console.WriteLine($"CNPF: {fornecedor.ObterCnpj()}");
+                        Console.WriteLine($"TELEFONE: {fornecedor.ObterTelefone()}");
+                        Console.WriteLine($"E-MAIL: {fornecedor.ObterEmail()}");
+                        Console.WriteLine();
+                    }
+
+                Console.WriteLine("(Clique novamente para voltar ao menu)");
+                Console.ReadKey();
+                break;
+
+                case 3:
+                Console.Clear();
+                foreach (Movimentacao mov in movimentacoes)
+                    {
+                        Console.WriteLine($"ID DA MOVIMENTAÇÃO: {mov.ObterIdMovimentacao()}");
+                        Console.WriteLine($"TIPO: {mov.ObterTipo()}");
+                        Console.WriteLine($"DATA: {mov.ObterData()}");
+
+                        foreach (ItemMovimentacao item in mov.ObterItens())
+                        {
+                            Console.WriteLine($"PRODUTO: {item.ObterLote().ObterProduto().ObterNome()}");
+                            Console.WriteLine($"LOTE: {item.ObterLote().ObterCodigoLote()}");
+                            Console.WriteLine($"QUANTIDADE: {item.ObterQuantidade()}");
+                            Console.WriteLine();
+                        }
+                    }
+
+                Console.WriteLine("(Clique novamente para voltar ao menu)");
+                Console.ReadKey();
+                break;
             
-            default:
-            Console.WriteLine($"Número inválido!\n(Clique novamente para continuar)");
+                default:
+                Console.WriteLine($"Número inválido!\n(Clique novamente para voltar ao menu)");
+                Console.ReadKey();
+                break;
+            }
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine($"Valor inválido!\n(Clique novamente para voltar ao menu)");
             Console.ReadKey();
-            Console.WriteLine();
-            break;
         }
     }
 
@@ -469,66 +477,6 @@ class Program
             Console.ReadKey();
             Console.WriteLine();
             break;
-        }
-    }
-
-    static void SalvarProdutos()
-    {
-        string json = JsonSerializer.Serialize(produtos, new JsonSerializerOptions {WriteIndented = true});
-        File.WriteAllText("produtos.json", json);
-    }
-
-    public static void SalvarLotes()
-    {
-        string json = JsonSerializer.Serialize(lotes, new JsonSerializerOptions {WriteIndented = true});
-        File.WriteAllText("lotes.json", json);
-    }
-
-    public static void SalvarFornecedores()
-    {
-        string json = JsonSerializer.Serialize(fornecedores, new JsonSerializerOptions {WriteIndented = true});
-        File.WriteAllText("fornecedores.json", json);
-    }
-
-    public static void SalvarMovimentacoes()
-    {
-        string json = JsonSerializer.Serialize(movimentacoes, new JsonSerializerOptions {WriteIndented = true});
-        File.WriteAllText("movimentacoes.json", json);
-    }
-
-    public static void CarregarProdutos()
-    {
-        if (File.Exists("produtos.json"))
-        {
-            string json = File.ReadAllText("produtos.json");
-            produtos = JsonSerializer.Deserialize<List<Produto>>(json);
-        }
-    }
-
-    public static void CarregarLotes()
-    {
-        if (File.Exists("lotes.json"))
-        {
-            string json = File.ReadAllText("lotes.json");
-            lotes = JsonSerializer.Deserialize<List<Lote>>(json);
-        }
-    }
-
-    public static void CarregarFornecedores()
-    {
-        if (File.Exists("fornecedores.json"))
-        {
-            string json = File.ReadAllText("fornecedores.json");
-            fornecedores = JsonSerializer.Deserialize<List<Fornecedor>>(json);
-        }
-    }
-
-    public static void CarregarMovimentacoes()
-    {
-        if (File.Exists("movimentacoes.json"))
-        {
-            string json = File.ReadAllText("movimentacoes.json");
-            movimentacoes = JsonSerializer.Deserialize<List<Movimentacao>>(json);
         }
     }
 }

@@ -1,0 +1,28 @@
+[
+  {
+    "IdLote": 100100,
+    "CodigoLote": "aaaa",
+    "QuantidadeAtual": 50,
+    "DataValidade": "2026-07-16T00:00:00",
+    "Produto": {
+      "IdProduto": 100,
+      "Nome": "aaa",
+      "Descricao": "aaa",
+      "Preco": 10.99,
+      "Categoria": "aaa"
+    }
+  },
+  {
+    "IdLote": 100101,
+    "CodigoLote": "bbbb",
+    "QuantidadeAtual": 55,
+    "DataValidade": "2026-07-16T00:00:00",
+    "Produto": {
+      "IdProduto": 100,
+      "Nome": "aaa",
+      "Descricao": "aaa",
+      "Preco": 10.99,
+      "Categoria": "aaa"
+    }
+  }
+]
