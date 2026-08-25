@@ -1,0 +1,50 @@
+[
+  {
+    "IdMovimentacao": 100,
+    "Data": "2026-08-25T12:56:18.7662505-03:00",
+    "Tipo": "saida",
+    "Observacao": "teste",
+    "Itens": [
+      {
+        "Lote": {
+          "IdLote": 100100,
+          "CodigoLote": "aaaa",
+          "QuantidadeAtual": 0,
+          "DataValidade": "2026-09-25T00:00:00",
+          "Produto": {
+            "IdProduto": 100,
+            "Nome": "a",
+            "Descricao": "a",
+            "Preco": 1,
+            "Categoria": "a"
+          }
+        },
+        "Quantidade": 1
+      }
+    ]
+  },
+  {
+    "IdMovimentacao": 101,
+    "Data": "2026-08-25T13:03:04.154486-03:00",
+    "Tipo": "entrada",
+    "Observacao": "se funcionar vai ser incr\u00EDvel",
+    "Itens": [
+      {
+        "Lote": {
+          "IdLote": 100100,
+          "CodigoLote": "aaaa",
+          "QuantidadeAtual": 100,
+          "DataValidade": "2026-09-25T00:00:00",
+          "Produto": {
+            "IdProduto": 100,
+            "Nome": "a",
+            "Descricao": "a",
+            "Preco": 1,
+            "Categoria": "a"
+          }
+        },
+        "Quantidade": 100
+      }
+    ]
+  }
+]

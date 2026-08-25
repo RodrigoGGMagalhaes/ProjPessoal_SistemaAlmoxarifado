@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "K:\\.ARQUIVOS DO USUÁRIO\\Desktop\\Faculdade SI\\Pessoal\\Sistema Almoxarifado\\ProjPessoal_SistemaAlmoxarifado\\ProjPessoal_SistemaAlmoxarifado.csproj",
+      "projectUniqueName": "K:\\.ARQUIVOS DO USUÁRIO\\Desktop\\Sistema Almoxarifado\\ProjPessoal_SistemaAlmoxarifado\\ProjPessoal_SistemaAlmoxarifado.csproj",
       "projectName": "ProjPessoal_SistemaAlmoxarifado",
-      "projectPath": "K:\\.ARQUIVOS DO USUÁRIO\\Desktop\\Faculdade SI\\Pessoal\\Sistema Almoxarifado\\ProjPessoal_SistemaAlmoxarifado\\ProjPessoal_SistemaAlmoxarifado.csproj",
+      "projectPath": "K:\\.ARQUIVOS DO USUÁRIO\\Desktop\\Sistema Almoxarifado\\ProjPessoal_SistemaAlmoxarifado\\ProjPessoal_SistemaAlmoxarifado.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "K:\\.ARQUIVOS DO USUÁRIO\\Desktop\\Faculdade SI\\Pessoal\\Sistema Almoxarifado\\ProjPessoal_SistemaAlmoxarifado\\obj\\",
+      "outputPath": "K:\\.ARQUIVOS DO USUÁRIO\\Desktop\\Sistema Almoxarifado\\ProjPessoal_SistemaAlmoxarifado\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"

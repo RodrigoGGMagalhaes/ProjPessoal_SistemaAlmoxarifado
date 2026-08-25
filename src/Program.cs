@@ -9,10 +9,10 @@ class Program
 
     static void Main()
     {
-        Gerenciamento.CarregarProdutos(produtos);
-        Gerenciamento.CarregarLotes(lotes);
-        Gerenciamento.CarregarFornecedores(fornecedores);
-        Gerenciamento.CarregarMovimentacoes(movimentacoes);
+        produtos = Gerenciamento.CarregarProdutos(produtos);
+        lotes = Gerenciamento.CarregarLotes(lotes);
+        fornecedores = Gerenciamento.CarregarFornecedores(fornecedores);
+        movimentacoes = Gerenciamento.CarregarMovimentacoes(movimentacoes);
         
         int paginaMenu = 4;
 
@@ -580,6 +580,7 @@ class Program
     {
         int paginaImprimir;
 
+        Console.Clear();
         Console.WriteLine("=== IMPRIMIR RELATÓRIO ===");
         Console.WriteLine();
 
@@ -588,6 +589,7 @@ class Program
         Console.WriteLine("2 - Saída");
         Console.WriteLine("0 - Cancelar");
         Console.Write("ESCOLHA: ");
+        Console.WriteLine();
         paginaImprimir = int.Parse(Console.ReadLine());
 
         switch (paginaImprimir)

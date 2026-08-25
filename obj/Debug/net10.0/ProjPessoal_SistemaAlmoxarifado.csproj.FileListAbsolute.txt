@@ -13,3 +13,18 @@ K:\.ARQUIVOS DO USUÁRIO\Desktop\Faculdade SI\Pessoal\Sistema Almoxarifado\ProjP
 K:\.ARQUIVOS DO USUÁRIO\Desktop\Faculdade SI\Pessoal\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\obj\Debug\net10.0\ProjPessoal_SistemaAlmoxarifado.pdb
 K:\.ARQUIVOS DO USUÁRIO\Desktop\Faculdade SI\Pessoal\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\obj\Debug\net10.0\ProjPessoal_SistemaAlmoxarifado.genruntimeconfig.cache
 K:\.ARQUIVOS DO USUÁRIO\Desktop\Faculdade SI\Pessoal\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\obj\Debug\net10.0\ref\ProjPessoal_SistemaAlmoxarifado.dll
+K:\.ARQUIVOS DO USUÁRIO\Desktop\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\bin\Debug\net10.0\ProjPessoal_SistemaAlmoxarifado.exe
+K:\.ARQUIVOS DO USUÁRIO\Desktop\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\bin\Debug\net10.0\ProjPessoal_SistemaAlmoxarifado.deps.json
+K:\.ARQUIVOS DO USUÁRIO\Desktop\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\bin\Debug\net10.0\ProjPessoal_SistemaAlmoxarifado.runtimeconfig.json
+K:\.ARQUIVOS DO USUÁRIO\Desktop\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\bin\Debug\net10.0\ProjPessoal_SistemaAlmoxarifado.dll
+K:\.ARQUIVOS DO USUÁRIO\Desktop\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\bin\Debug\net10.0\ProjPessoal_SistemaAlmoxarifado.pdb
+K:\.ARQUIVOS DO USUÁRIO\Desktop\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\obj\Debug\net10.0\ProjPessoal_SistemaAlmoxarifado.GeneratedMSBuildEditorConfig.editorconfig
+K:\.ARQUIVOS DO USUÁRIO\Desktop\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\obj\Debug\net10.0\ProjPessoal_SistemaAlmoxarifado.AssemblyInfoInputs.cache
+K:\.ARQUIVOS DO USUÁRIO\Desktop\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\obj\Debug\net10.0\ProjPessoal_SistemaAlmoxarifado.AssemblyInfo.cs
+K:\.ARQUIVOS DO USUÁRIO\Desktop\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\obj\Debug\net10.0\ProjPessoal_SistemaAlmoxarifado.csproj.CoreCompileInputs.cache
+K:\.ARQUIVOS DO USUÁRIO\Desktop\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\obj\Debug\net10.0\ProjPessoal_SistemaAlmoxarifado.sourcelink.json
+K:\.ARQUIVOS DO USUÁRIO\Desktop\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\obj\Debug\net10.0\ProjPessoal_SistemaAlmoxarifado.dll
+K:\.ARQUIVOS DO USUÁRIO\Desktop\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\obj\Debug\net10.0\refint\ProjPessoal_SistemaAlmoxarifado.dll
+K:\.ARQUIVOS DO USUÁRIO\Desktop\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\obj\Debug\net10.0\ProjPessoal_SistemaAlmoxarifado.pdb
+K:\.ARQUIVOS DO USUÁRIO\Desktop\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\obj\Debug\net10.0\ProjPessoal_SistemaAlmoxarifado.genruntimeconfig.cache
+K:\.ARQUIVOS DO USUÁRIO\Desktop\Sistema Almoxarifado\ProjPessoal_SistemaAlmoxarifado\obj\Debug\net10.0\ref\ProjPessoal_SistemaAlmoxarifado.dll

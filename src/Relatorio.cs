@@ -22,7 +22,11 @@ public class RelatorioEntrada : Relatorio
     }
     public override void Imprimir()
     {
-        using(StreamWriter writer = new StreamWriter("RelatorioEntrada.txt"))
+        string pasta = Path.Combine(Directory.GetCurrentDirectory(),"src");
+
+        Directory.CreateDirectory(pasta);
+
+        using(StreamWriter writer = new StreamWriter(Path.Combine(pasta, "RelatorioEntrada.txt")))
         {
             Cabecalho(writer);
 
@@ -58,7 +62,11 @@ public class RelatorioSaida : Relatorio
     }
     public override void Imprimir()
     {
-        using(StreamWriter writer = new StreamWriter("RelatorioSaida.txt"))
+        string pasta = Path.Combine(Directory.GetCurrentDirectory(),"src");
+
+        Directory.CreateDirectory(pasta);
+
+        using(StreamWriter writer = new StreamWriter(Path.Combine(pasta, "RelatorioSaida.txt")))
         {
             Cabecalho(writer);
 

@@ -1,0 +1,15 @@
+[
+  {
+    "IdLote": 100100,
+    "CodigoLote": "aaaa",
+    "QuantidadeAtual": 100,
+    "DataValidade": "2026-09-25T00:00:00",
+    "Produto": {
+      "IdProduto": 100,
+      "Nome": "a",
+      "Descricao": "a",
+      "Preco": 1,
+      "Categoria": "a"
+    }
+  }
+]
